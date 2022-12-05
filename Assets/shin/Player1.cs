@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VoxelMaker : MonoBehaviour
+public class Player1 : MonoBehaviour
 {
+    /*public Transform target2;*/
     public GameObject bullet;
     public float bullet_speed = 5000;       // 탄속
     public float bullet_cooldown_Interval = 0.3f;    // 총알 쿨다운
@@ -47,7 +48,7 @@ public class VoxelMaker : MonoBehaviour
     public GameObject target;
     public float move_sensitivity = 0.3f;
 
-    void Thumb()
+    void Thumb()    // 드럼스틱(조이스틱)임
     {
         if (OVRInput.Get(OVRInput.Touch.SecondaryThumbstick))
         {
@@ -82,7 +83,7 @@ public class VoxelMaker : MonoBehaviour
         }
     }
 
-    void Trigger()
+    void Trigger()  // 오큘 컨트롤러 뒤에있는 트리거임
     {
         if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger))
         {
@@ -93,13 +94,13 @@ public class VoxelMaker : MonoBehaviour
     // pc용 컨트롤
     void moveForPC()
     {
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow))    // 좌이동임
         {
             this.transform.Translate(-0.1f * move_sensitivity, 0.0f, 0.0f);
             Debug.Log("Left (of keyboard)");
         }
 
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow))   //우이동임
         {
             this.transform.Translate(0.1f * move_sensitivity, 0.0f, 0.0f);
             Debug.Log("Right (of keyboard)");
@@ -141,8 +142,8 @@ public class VoxelMaker : MonoBehaviour
         Thumb();
         Trigger();
 
-
-        if (Input.GetKeyDown(KeyCode.Return))
+        // 디버깅용임
+        if (Input.GetKeyDown(KeyCode.Return))   // Return은 Enter임
         {
             audioSource.Stop();
             audioSource.Play();
