@@ -1,53 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class MeteoScript : MonoBehaviour
+public class hp_script : MonoBehaviour
 {
     public float time = 1;
     public float distance = 5.0f;
     float createTime;
     float currentTime;
     public GameObject voxelFactory;
-    public Slider HealthBar;
-
-    public int collision = 100;
-    public int count = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         createTime = time;
-    }
-
-    public void Sum(char heal)
-    {
-        if (heal == '-')
-        {
-            count++;
-            collision -= 10;
-        }
-        else if (heal == '+')
-            collision += 10;
-
-    }
-    public void Hpbar(char heal)
-    {
-        if (heal == '-')
-            HealthBar.value -= 0.1f;
-        else if (heal == '+')
-            HealthBar.value += 0.1f;
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log("collision");
-        if (collision.gameObject.CompareTag("Meteo"))
-        {
-            Sum('-');
-            Hpbar('-');
-        }
     }
 
     // Update is called once per frame
@@ -89,9 +55,6 @@ public class MeteoScript : MonoBehaviour
             currentTime = 0;
 
             createTime = time;
-
         }
-
-
     }
 }
