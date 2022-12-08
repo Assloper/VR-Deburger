@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8550918330322855337}
   m_Layer: 0
   m_Name: Asteroid_03_L
-  m_TagString: Untagged
+  m_TagString: Meteo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

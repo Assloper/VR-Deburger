@@ -17,6 +17,9 @@ public class AllDelete_voxel : MonoBehaviour
 
 	public GameObject collectEffect;
 
+	public GameObject changeObject;
+	public AudioClip explosionSound;
+
 	// Use this for initialization
 	void Start()
 	{
@@ -97,7 +100,14 @@ public class AllDelete_voxel : MonoBehaviour
 		
 		for (int i=0; i<obj.Length; i++)
         {
+			if (collectSound)
+				AudioSource.PlayClipAtPoint(explosionSound, transform.position);
+
 			Destroy(obj[i]);
+
+			GameObject voxel = Instantiate(changeObject);
+			voxel.transform.position = obj[i].gameObject.transform.position;
+			Destroy(voxel, 1.0f);
 		}
 		
 		Destroy(gameObject);

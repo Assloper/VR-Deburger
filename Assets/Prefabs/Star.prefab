@@ -102,7 +102,9 @@ MonoBehaviour:
   rotate: 0
   rotationSpeed: 0
   collectSound: {fileID: 8300000, guid: 4fdf8ee97aae3da4d9fc4547483d9e7d, type: 3}
-  collectEffect: {fileID: 0}
+  collectEffect: {fileID: 1702657300312902, guid: a45c51da10cf1a84abc6a99c06951e3f, type: 3}
+  changeObject: {fileID: 5025951498495770907, guid: f30295ead37c6604c902325fd5df8699, type: 3}
+  explosionSound: {fileID: 8300000, guid: 4b8b1d12421a15449899d63ea9a423b3, type: 3}
 --- !u!82 &7870038580844664322
 AudioSource:
   m_ObjectHideFlags: 0
