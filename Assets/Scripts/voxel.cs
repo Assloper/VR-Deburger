@@ -7,6 +7,10 @@ public class voxel : MonoBehaviour
     public float speed=1;
     public Rigidbody rb;
     Vector3 destination = new Vector3(0, 0, 0);
+
+    public GameObject changeObject;
+    public AudioClip collectSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +21,7 @@ public class voxel : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Earth"))
         {
-            Destroy(gameObject);
+            Collect();
         }else if (collision.gameObject.CompareTag("bullet"))
         {
             Destroy(gameObject);
@@ -31,5 +35,17 @@ public class voxel : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, destination, speed);
         //Vector3 speed = new Vector3 (0, 0, 0);
         //transform.position = Vector3.SmoothDamp(transform.position, destination, ref speed, 0.1f);
+    }
+
+    public void Collect()
+    {
+        if (collectSound)
+            AudioSource.PlayClipAtPoint(collectSound, transform.position);
+
+        Destroy(gameObject);
+
+        GameObject voxel = Instantiate(changeObject);
+        voxel.transform.position = this.gameObject.transform.position;
+        Destroy(voxel, 1.0f);
     }
 }

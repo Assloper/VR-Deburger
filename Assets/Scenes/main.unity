@@ -723,10 +723,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   time: 2
   distance: 500
-  voxelFactory: {fileID: 6584893085072014071, guid: ab729e9c9c153824d9365c494be81288, type: 3}
   HealthBar: {fileID: 503136897}
   collision: 100
   count: 0
+  meteoPrefab:
+  - {fileID: 2787217385705299921, guid: 52ab324804e22ae4f9019ce18b75eeab, type: 3}
+  - {fileID: 4523851358387194427, guid: e561aa16712ee2a47bf97342e75389d3, type: 3}
+  - {fileID: 1343060006049474580, guid: 03825be0199137c4fa27edbdc2cbae07, type: 3}
+  - {fileID: 3700624021272230927, guid: 0e6882e89911d3b43aecc16c1bad149c, type: 3}
+  - {fileID: 6265600630947859736, guid: fa487c38e3b2aa54598d4e2628c81cb3, type: 3}
+  - {fileID: 8299256887834985848, guid: 12a8467d99b0e2144805ff35c70fc9ac, type: 3}
 --- !u!135 &645385264
 SphereCollider:
   m_ObjectHideFlags: 0

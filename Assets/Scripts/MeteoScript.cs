@@ -9,11 +9,13 @@ public class MeteoScript : MonoBehaviour
     public float distance = 5.0f;
     float createTime;
     float currentTime;
-    public GameObject voxelFactory;
+    //public GameObject voxelFactory;
     public Slider HealthBar;
 
     public int collision = 100;
     public int count = 0;
+
+    public GameObject[] meteoPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -57,7 +59,10 @@ public class MeteoScript : MonoBehaviour
 
         if (currentTime > createTime)
         {
-            GameObject voxel = Instantiate(voxelFactory);
+            int randomTexture = Random.Range(0, 5);
+            GameObject voxel = Instantiate(meteoPrefab[randomTexture]);
+
+            //GameObject voxel = Instantiate(voxelFactory);
             Vector3 position = voxel.transform.localPosition;
             int randomNum = Random.Range(1, 4);
             if (randomNum == 1)
