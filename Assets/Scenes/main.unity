@@ -722,7 +722,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   time: 2
-  distance: 1000
+  distance: 500
   voxelFactory: {fileID: 6584893085072014071, guid: ab729e9c9c153824d9365c494be81288, type: 3}
   HealthBar: {fileID: 503136897}
   collision: 100
@@ -955,7 +955,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1251635309}
-  - component: {fileID: 1251635308}
+  - component: {fileID: 1251635310}
+  - component: {fileID: 1251635311}
   m_Layer: 0
   m_Name: VoxelFactory
   m_TagString: Untagged
@@ -963,21 +964,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1251635308
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1251635307}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc45c98637fa68f48a4b09f6eca52031, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  time: 1
-  distance: 50
-  voxelFactory: {fileID: 413188165324876771, guid: 518db62049d47e941931c9ee40c0fb93, type: 3}
 --- !u!4 &1251635309
 Transform:
   m_ObjectHideFlags: 0
@@ -993,6 +979,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1251635310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251635307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c7d8f24843d2d540a0b09900d8b9554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 5
+  distance: 50
+  voxelFactory: {fileID: 413188165324876771, guid: 518db62049d47e941931c9ee40c0fb93, type: 3}
+--- !u!114 &1251635311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251635307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c7d8f24843d2d540a0b09900d8b9554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 5
+  distance: 50
+  voxelFactory: {fileID: 7788418566094522872, guid: c6e97765e68afe0438d4ea3e4f817d2f, type: 3}
 --- !u!1 &1717255361
 GameObject:
   m_ObjectHideFlags: 0

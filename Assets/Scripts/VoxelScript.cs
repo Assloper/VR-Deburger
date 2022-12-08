@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class hp_script : MonoBehaviour
+public class VoxelScript : MonoBehaviour
 {
     public float time = 1;
     public float distance = 5.0f;
