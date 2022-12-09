@@ -9,11 +9,13 @@ public class MeteoScript : MonoBehaviour
     public float distance = 5.0f;
     float createTime;
     float currentTime;
-    public GameObject voxelFactory;
+    //public GameObject voxelFactory;
     public Slider HealthBar;
 
     public int collision = 100;
     public int count = 0;
+
+    public GameObject[] meteoPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -21,15 +23,23 @@ public class MeteoScript : MonoBehaviour
         createTime = time;
     }
 
-    void Sum()
+    public void Sum(char heal)
     {
-        count++;
-        collision -= 10;
+        if (heal == '-')
+        {
+            count++;
+            collision -= 10;
+        }
+        else if (heal == '+')
+            collision += 10;
 
     }
-    void Hpbar()
+    public void Hpbar(char heal)
     {
-        HealthBar.value -= 0.1f;
+        if (heal == '-')
+            HealthBar.value -= 0.1f;
+        else if (heal == '+')
+            HealthBar.value += 0.1f;
     }
 
     void OnCollisionEnter(Collision collision)
@@ -37,9 +47,8 @@ public class MeteoScript : MonoBehaviour
         Debug.Log("collision");
         if (collision.gameObject.CompareTag("Meteo"))
         {
-            Sum();
-            Hpbar();
-            Debug.Log("collision");
+            Sum('-');
+            Hpbar('-');
         }
     }
 
@@ -50,7 +59,10 @@ public class MeteoScript : MonoBehaviour
 
         if (currentTime > createTime)
         {
-            GameObject voxel = Instantiate(voxelFactory);
+            int randomTexture = Random.Range(0, 5);
+            GameObject voxel = Instantiate(meteoPrefab[randomTexture]);
+
+            //GameObject voxel = Instantiate(voxelFactory);
             Vector3 position = voxel.transform.localPosition;
             int randomNum = Random.Range(1, 4);
             if (randomNum == 1)

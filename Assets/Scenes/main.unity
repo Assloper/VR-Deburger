@@ -722,11 +722,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   time: 2
-  distance: 1000
-  voxelFactory: {fileID: 6584893085072014071, guid: ab729e9c9c153824d9365c494be81288, type: 3}
+  distance: 500
   HealthBar: {fileID: 503136897}
   collision: 100
   count: 0
+  meteoPrefab:
+  - {fileID: 2787217385705299921, guid: 52ab324804e22ae4f9019ce18b75eeab, type: 3}
+  - {fileID: 4523851358387194427, guid: e561aa16712ee2a47bf97342e75389d3, type: 3}
+  - {fileID: 1343060006049474580, guid: 03825be0199137c4fa27edbdc2cbae07, type: 3}
+  - {fileID: 3700624021272230927, guid: 0e6882e89911d3b43aecc16c1bad149c, type: 3}
+  - {fileID: 6265600630947859736, guid: fa487c38e3b2aa54598d4e2628c81cb3, type: 3}
+  - {fileID: 8299256887834985848, guid: 12a8467d99b0e2144805ff35c70fc9ac, type: 3}
 --- !u!135 &645385264
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -946,6 +952,69 @@ RectTransform:
   m_AnchoredPosition: {x: -0, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1251635307
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1251635309}
+  - component: {fileID: 1251635310}
+  - component: {fileID: 1251635311}
+  m_Layer: 0
+  m_Name: VoxelFactory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1251635309
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251635307}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1251635310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251635307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c7d8f24843d2d540a0b09900d8b9554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 5
+  distance: 50
+  voxelFactory: {fileID: 413188165324876771, guid: 518db62049d47e941931c9ee40c0fb93, type: 3}
+--- !u!114 &1251635311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251635307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c7d8f24843d2d540a0b09900d8b9554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 5
+  distance: 50
+  voxelFactory: {fileID: 7788418566094522872, guid: c6e97765e68afe0438d4ea3e4f817d2f, type: 3}
 --- !u!1 &1717255361
 GameObject:
   m_ObjectHideFlags: 0
@@ -996,6 +1065,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.1
   zoomSpeed: 10
+  yaw_sensitivity: 20
   limitAngle: 45
   sensitivity_forMouse: 200
 --- !u!114 &1717255365
