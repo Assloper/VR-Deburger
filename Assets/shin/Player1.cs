@@ -9,12 +9,14 @@ public class Player1 : MonoBehaviour
     public float bullet_speed = 5000;       // 탄속
     public float bullet_cooldown_Interval = 0.3f;    // 총알 쿨다운
     float timer_cooldown = 0;               // 쿨다운을 위한 타이머
-
+    
     public bool Shooter_Shoot()
     {
-        if (timer_cooldown >= bullet_cooldown_Interval) {
+        if (timer_cooldown >= bullet_cooldown_Interval)
+        {
             if (ARAVRInput.GetDown(ARAVRInput.Button.One) || Input.GetKey(KeyCode.Space))
             {
+                
                 //Physics.Raycast(ray, out hitInfo);
                 GameObject projectile = Instantiate(bullet, transform.position, Quaternion.identity) as GameObject; // 생성과 동시에 좌표 및 방향 벡터정보를 이미 넘겨줌
                                                                                                                     //projectile.transform.position = hitInfo.point;                     // 이미 Instantiate에서 정의된 부분
@@ -22,14 +24,17 @@ public class Player1 : MonoBehaviour
                 projectile.GetComponent<Rigidbody>().AddForce(transform.forward * bullet_speed);
                 Destroy(projectile, 2);
                 timer_cooldown = 0;
-
+                
                 return true;
-            }else
+            }
+            else
             {
                 return false;
             }
-        } else
+        }
+        else
         {
+            
             return false;   // Shoot 실패의 경우 false return
         }
 
@@ -39,8 +44,7 @@ public class Player1 : MonoBehaviour
 
 
 
-
-
+    
 
 
 
@@ -111,7 +115,7 @@ public class Player1 : MonoBehaviour
 
 
 
-
+    
 
     AudioSource audioSource;
 
