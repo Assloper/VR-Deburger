@@ -28,18 +28,19 @@ public class MeteoScript : MonoBehaviour
         if (heal == '-')
         {
             count++;
-            collision -= 10;
+            if (collision <= 100)
+                collision -= 10;
         }
         else if (heal == '+')
-            collision += 10;
+        {
+            if (collision < 100)
+                collision += 10;
+        }
+        HealthBar.value = collision / 100.0f;
 
-    }
-    public void Hpbar(char heal)
-    {
-        if (heal == '-')
-            HealthBar.value -= 0.1f;
-        else if (heal == '+')
-            HealthBar.value += 0.1f;
+        if (collision == 0)
+            Debug.Log("End Game");
+
     }
 
     void OnCollisionEnter(Collision collision)
@@ -48,7 +49,6 @@ public class MeteoScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Meteo"))
         {
             Sum('-');
-            Hpbar('-');
         }
     }
 

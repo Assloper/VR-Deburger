@@ -93,7 +93,7 @@ public class HealScripts : MonoBehaviour
 
 			Debug.Log("Do NoType Command");
 		}
-		collision_script.Hpbar('+');
+
 		collision_script.Sum('+');
 		Destroy(gameObject);
 	}
