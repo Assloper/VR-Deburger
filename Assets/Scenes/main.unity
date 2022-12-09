@@ -1277,7 +1277,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1763526850, guid: 0d4eccf6955617241955372eca46724b, type: 3}
       propertyPath: bullet_cooldown_Interval
-      value: 0.1
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 6144404516356780554, guid: 0d4eccf6955617241955372eca46724b, type: 3}
       propertyPath: m_RootOrder
