@@ -6,11 +6,10 @@ public class Player2 : MonoBehaviour
 {
     Rigidbody rigidbody;
     Camera mainCamera;
-    Vector3 angle;
-
-    public float speed = 10f;
-
-
+    public Vector3 angle;
+    
+    
+    public float speed = 0.1f;
     public float zoomSpeed = 10.0f;
     void zoom()
     {
@@ -21,59 +20,97 @@ public class Player2 : MonoBehaviour
         }
     }
 
-    public float yaw_sensitivity = 20f;
-    public float limitAngle = 45; 
+    public float roll_sensitivity = 0.5f;
+    public float yaw_sensitivity = 0.3f;
+    public float limitAngle = 2;
     public float sensitivity_forMouse = 200;
     void rotate()
     {
-/*        // 마우스 좌표에 따라 시야가 도는 블럭
-        float x = Input.GetAxis("Mouse X");
-        float y = Input.GetAxis("Mouse Y");
-        angle.x += x * sensitivity_forMouse * Time.deltaTime;
-        angle.y += y * sensitivity_forMouse * Time.deltaTime;*/
+        /*        // 마우스 좌표에 따라 시야가 도는 블럭
+                float x = Input.GetAxis("Mouse X");
+                float y = Input.GetAxis("Mouse Y");
+                angle.x += x * sensitivity_forMouse * Time.deltaTime;
+                angle.y += y * sensitivity_forMouse * Time.deltaTime;*/
 
-        if (Input.GetKey(KeyCode.A) && angle.z < limitAngle) 
+        if (Input.GetKey(KeyCode.A) && angle.z < limitAngle)
         {
-            angle.z += 0.1f; 
-            transform.Rotate(new Vector3(0,-1,0) * Time.deltaTime * yaw_sensitivity);
+            angle.z += roll_sensitivity;
+            
         }
+
         if (Input.GetKey(KeyCode.D) && angle.z > -limitAngle)
         {
-            angle.z -= 0.1f;
-            transform.Rotate(new Vector3(0, 1, 0) * Time.deltaTime * yaw_sensitivity);
+            angle.z -= roll_sensitivity;
+
         }
-        transform.Rotate(0, 0, angle.z/100);
+
+        if (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
+        {
+            if (angle.z < 0)
+            {
+                angle.z += 0.1f;
+
+            }
+            else if (angle.z > 0)
+            {
+                angle.z -= 0.1f;
+
+            }
+                
+        }
+
+
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            angle.y -= yaw_sensitivity;
+        }
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            angle.y += yaw_sensitivity;
+        }
+
+        transform.rotation = Quaternion.Euler(0, angle.y, angle.z);
+
     }
 
     // Move
     void move()
     {
-/*
-        // 실습용이었던걸 떼온것, 참고용도
-        transform.Translate(Input.GetAxis("Horizontal") * speed * Time.deltaTime, 0, 0);
-        transform.Translate(0, 0, Input.GetAxis("Vertical") * speed * Time.deltaTime);
-        //Vector3 relativePos = target.position - transform.position;
-        //transform.rotation = Quaternion.LookRotation(relativePos);
-*/
+        /*
+                // 실습용이었던걸 떼온것, 참고용도
+                transform.Translate(Input.GetAxis("Horizontal") * speed * Time.deltaTime, 0, 0);
+                transform.Translate(0, 0, Input.GetAxis("Vertical") * speed * Time.deltaTime);
+                //Vector3 relativePos = target.position - transform.position;
+                //transform.rotation = Quaternion.LookRotation(relativePos);
+        */
 
-           
-/*        if (Input.GetKey(KeyCode.A))                        // move to left, keyboard 'A'
-            this.transform.Translate(-0.1f * speed, 0, 0);
-        if (Input.GetKey(KeyCode.D))                        // move to right, keyboard 'D'      
-            this.transform.Translate(0.1f * speed, 0, 0);
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.Translate(-0.2f, 0, 0);   // 조금씩 이동
+        }
+
+        if (Input.GetKey(KeyCode.D))
+        {
+            transform.Translate(0.2f, 0, 0);   // 조금씩 이동
+        }
+
         if (Input.GetKey(KeyCode.S))                        // move to back, keyboard 'S'
             this.transform.Translate(0, 0, -0.1f * speed);
-*/
+
 
         if (Input.GetKey(KeyCode.W))
         {
-            this.transform.Translate((-angle.z / 1000), -transform.position.y, 0);     // roll 각도에 따라 추가적으로 horizontal 이동하는 코드. 즉, 기울어진 방향으로 약간 이동하는 코드 + y축 이동을 막는 코드
-            rigidbody.velocity = transform.forward * speed;
+            transform.Translate((-angle.z / 100), 0, speed);     // roll 각도에 따라 추가적으로 horizontal 이동하는 코드. 즉, 기울어진 방향으로 약간 이동하는 코드 + y축 이동을 막는 코드
+            //rigidbody.velocity = transform.forward * speed;
 
         }
 
         Camera.main.transform.position = transform.position;    // 카메라가 따라오게 함
-        Camera.main.transform.Translate(0, 5.8f, 0);
+        //Camera.main.transform.Translate(0, 5.8f, 0);  // 
+        Camera.main.transform.Translate(0, 0.9f, -3);
+        transform.Translate(0, -transform.position.y, 0);
+        Camera.main.transform.rotation = Quaternion.Euler(0, angle.y, 0);
     }
 
 
