@@ -11,10 +11,14 @@ public class voxel : MonoBehaviour
     public GameObject changeObject;
     public AudioClip collectSound;
 
+    public int ScoreNum = 1;
+    MeteoScript collision_script;
+
     // Start is called before the first frame update
     void Start()
     {
         this.rb = GetComponent<Rigidbody>();
+        collision_script = GameObject.Find("Earth").GetComponent<MeteoScript>();
     }
 
     void OnCollisionEnter(Collision collision)
@@ -26,6 +30,7 @@ public class voxel : MonoBehaviour
         {
             Destroy(gameObject);
             Debug.Log("meteo detect bullet");
+            collision_script = GameObject.Find("Earth").GetComponent<MeteoScript>();
         }
     }
 

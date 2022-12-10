@@ -115,6 +115,7 @@ MonoBehaviour:
   rb: {fileID: -6163869333118447163}
   changeObject: {fileID: 5025951498495770907, guid: f30295ead37c6604c902325fd5df8699, type: 3}
   collectSound: {fileID: 8300000, guid: 4b8b1d12421a15449899d63ea9a423b3, type: 3}
+  ScoreNum: 6
 --- !u!54 &-6163869333118447163
 Rigidbody:
   m_ObjectHideFlags: 0

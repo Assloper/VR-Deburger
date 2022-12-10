@@ -14,6 +14,7 @@ public class MeteoScript : MonoBehaviour
 
     public int collision = 100;
     public int count = 0;
+    public int score = 0;
 
     public GameObject[] meteoPrefab;
 
@@ -21,6 +22,26 @@ public class MeteoScript : MonoBehaviour
     void Start()
     {
         createTime = time;
+    }
+
+    public void ScoreSum(int num)
+    {
+        // 운석크기 1~6
+        if (num == 1)
+            score += 5;
+        else if (num == 2)
+            score += 10;
+        else if (num == 3)
+            score += 15;
+        else if (num == 4)
+            score += 20;
+        else if (num == 5)
+            score += 25;
+        else if (num == 6)
+            score += 30;
+        else if (num == 7) // 지구와 부딪혔을 때 감소
+            score -= 15;
+
     }
 
     public void Sum(char heal)
@@ -40,6 +61,8 @@ public class MeteoScript : MonoBehaviour
 
         if (collision == 0)
             Debug.Log("End Game");
+
+        ScoreSum(7);
 
     }
 
