@@ -636,19 +636,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 157262, guid: c2e22098ce7c8da4590cceb5113bd50e, type: 3}
   m_PrefabInstance: {fileID: 511146461}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &645385257
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 645385253}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b47616c3816ed1479b64261bfe8b459, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  earth_hp: {fileID: 645385253}
 --- !u!114 &645385258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1064,7 +1051,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 383.6, y: 219.8}
+  m_AnchoredPosition: {x: 382, y: 219.8}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1071904670
@@ -1099,7 +1086,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '100
+  m_text: '100 / 100
 
 '
   m_isRightToLeft: 0
@@ -1164,7 +1151,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 92.2955, w: 19.268661}
+  m_margin: {x: 0, y: 0, z: 64.06076, w: 19.268661}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1209,7 +1196,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1251635310
 MonoBehaviour:
@@ -1570,7 +1557,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6144404516356780554, guid: 0d4eccf6955617241955372eca46724b, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6144404516356780554, guid: 0d4eccf6955617241955372eca46724b, type: 3}
       propertyPath: m_LocalPosition.x

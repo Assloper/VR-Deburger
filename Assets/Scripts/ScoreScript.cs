@@ -34,6 +34,6 @@ public class ScoreScript : MonoBehaviour
 
     void Status()
     {
-        statusText.text = hp.ToString();
+        statusText.text = hp.ToString() + " / 100";
     }
 }

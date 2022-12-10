@@ -5,9 +5,9 @@ using System;
 
 public class AllDelete_voxel : MonoBehaviour
 {
-	public enum CollectibleTypes { NoType, Type1, Type2, Type3, Type4, Type5 }; // you can replace this with your own labels for the types of collectibles in your game!
+	//public enum CollectibleTypes { NoType, Type1, Type2, Type3, Type4, Type5 }; // you can replace this with your own labels for the types of collectibles in your game!
 
-	public CollectibleTypes CollectibleType; // this gameObject's type
+	//public CollectibleTypes CollectibleType; // this gameObject's type
 
 	public bool rotate; // do you want it to rotate?
 
@@ -51,7 +51,7 @@ public class AllDelete_voxel : MonoBehaviour
 			Instantiate(collectEffect, transform.position, Quaternion.identity);
 
 		//Below is space to add in your code for what happens based on the collectible type
-
+		/*
 		if (CollectibleType == CollectibleTypes.NoType)
 		{
 
@@ -93,7 +93,7 @@ public class AllDelete_voxel : MonoBehaviour
 			//Add in code here;
 
 			Debug.Log("Do NoType Command");
-		}
+		}*/
 
 		GameObject[] obj = GameObject.FindGameObjectsWithTag("Meteo");
 		Debug.Log(obj.Length);
