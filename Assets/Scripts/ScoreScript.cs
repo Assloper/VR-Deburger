@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class ScoreScript : MonoBehaviour
@@ -35,5 +36,13 @@ public class ScoreScript : MonoBehaviour
     void Status()
     {
         statusText.text = hp.ToString() + " / 100";
+    }
+    
+    void GameOver()
+    {
+        if(hp == 0)
+        {
+            SceneManager.LoadScene("main");
+        }
     }
 }
