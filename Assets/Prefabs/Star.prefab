@@ -98,9 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 170ac6bba9ec4b646b813dd2f8a2bb91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CollectibleType: 0
   rotate: 0
-  rotationSpeed: 0
+  rotationSpeed: 5
   collectSound: {fileID: 8300000, guid: 4fdf8ee97aae3da4d9fc4547483d9e7d, type: 3}
   collectEffect: {fileID: 1702657300312902, guid: a45c51da10cf1a84abc6a99c06951e3f, type: 3}
   changeObject: {fileID: 5025951498495770907, guid: f30295ead37c6604c902325fd5df8699, type: 3}

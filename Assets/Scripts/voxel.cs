@@ -11,6 +11,7 @@ public class voxel : MonoBehaviour
 
     public GameObject changeObject;
     public AudioClip collectSound;
+    public AudioClip bulletTometeo;
 
     public int ScoreNum = 1;
     MeteoScript collision_script;
@@ -36,7 +37,9 @@ public class voxel : MonoBehaviour
         }*/
         else if(collision.gameObject.CompareTag("bullet"))
         {
-            if(ScoreNum == 1)
+            if (bulletTometeo)
+                AudioSource.PlayClipAtPoint(bulletTometeo, transform.position);
+            if (ScoreNum == 1)
             {
                 // score
                 collision_script.ScoreSum(ScoreNum);

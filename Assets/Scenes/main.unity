@@ -1156,7 +1156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c7d8f24843d2d540a0b09900d8b9554, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 5
+  time: 7
   distance: 50
   voxelFactory: {fileID: 413188165324876771, guid: 518db62049d47e941931c9ee40c0fb93, type: 3}
 --- !u!114 &1251635311
@@ -1171,7 +1171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c7d8f24843d2d540a0b09900d8b9554, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 5
+  time: 15
   distance: 50
   voxelFactory: {fileID: 7788418566094522872, guid: c6e97765e68afe0438d4ea3e4f817d2f, type: 3}
 --- !u!1001 &1349810016
