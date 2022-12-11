@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class MeteoScript : MonoBehaviour
 {
@@ -26,7 +28,7 @@ public class MeteoScript : MonoBehaviour
 
     public void ScoreSum(int num)
     {
-        // ¿î¼®Å©±â 1~6
+        // ï¿½î¼®Å©ï¿½ï¿½ 1~6
         if (num == 1)
             score += 5;
         else if (num == 2)
@@ -39,7 +41,7 @@ public class MeteoScript : MonoBehaviour
             score += 25;
         else if (num == 6)
             score += 30;
-        else if (num == 7) // Áö±¸¿Í ºÎµúÇûÀ» ¶§ °¨¼Ò
+        else if (num == 7) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             score -= 15;
 
     }
@@ -58,12 +60,10 @@ public class MeteoScript : MonoBehaviour
                 collision += 10;
         }
         HealthBar.value = collision / 100.0f;
-
-        if (collision == 0)
-            Debug.Log("End Game");
-
-        ScoreSum(7);
-
+        if(collision <= 0.0)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
     }
 
     void OnCollisionEnter(Collision collision)
@@ -119,7 +119,5 @@ public class MeteoScript : MonoBehaviour
             createTime = time;
 
         }
-
-
     }
 }

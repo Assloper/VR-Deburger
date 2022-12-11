@@ -37,12 +37,4 @@ public class ScoreScript : MonoBehaviour
     {
         statusText.text = hp.ToString() + " / 100";
     }
-    
-    void GameOver()
-    {
-        if(hp == 0)
-        {
-            SceneManager.LoadScene("main");
-        }
-    }
 }
