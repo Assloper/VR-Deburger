@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotate: 0
-  rotationSpeed: 0
+  rotationSpeed: 5
   collectSound: {fileID: 8300000, guid: 71c17f3331c3c144b8f56a61b69ddc5f, type: 3}
   collectEffect: {fileID: 1702657300312902, guid: a45c51da10cf1a84abc6a99c06951e3f, type: 3}
 --- !u!82 &332119344369683745
