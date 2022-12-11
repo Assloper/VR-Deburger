@@ -65,11 +65,11 @@ public class Player1 : MonoBehaviour
         }
 
 
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow) || thumbstick1.x < 0)
         {
             angle.y -= yaw_sensitivity;
         }
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow) || thumbstick1.x > 0)
         {
             angle.y += yaw_sensitivity;
         }
@@ -90,21 +90,21 @@ public class Player1 : MonoBehaviour
         */
 
 
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) || thumbstick2.x < 0 && absX2 > absY2)
         {
             transform.Translate(-0.2f, 0, 0);   // 조금씩 이동
         }
 
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D) || thumbstick2.x > 0 && absX2 > absY2)
         {
             transform.Translate(0.2f, 0, 0);   // 조금씩 이동
         }
 
-        if (Input.GetKey(KeyCode.S))                        // move to back, keyboard 'S'
+        if (Input.GetKey(KeyCode.S) || thumbstick2.y < 0 && absX2 < absY2)                        // move to back, keyboard 'S'
             this.transform.Translate(0, 0, -0.1f * speed);
 
 
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W) || thumbstick2.y > 0 && absX2 < absY2)
         {
             transform.Translate((-angle.z / 100), 0, speed);     // roll 각도에 따라 추가적으로 horizontal 이동하는 코드. 즉, 기울어진 방향으로 약간 이동하는 코드 + y축 이동을 막는 코드
             //rigidbody.velocity = transform.forward * speed;
@@ -118,18 +118,31 @@ public class Player1 : MonoBehaviour
         Camera.main.transform.rotation = Quaternion.Euler(0, angle.y, 0);
     }
 
+    Vector2 thumbstick1;
+    float absX1;
+    float absY1;
+    Vector2 thumbstick2;
+    float absX2;
+    float absY2;
     void Thumb()    // 드럼스틱(조이스틱)임
     {
-        if (OVRInput.Get(OVRInput.Touch.SecondaryThumbstick))
+        if (OVRInput.Get(OVRInput.Touch.PrimaryThumbstick))   //좌
         {
-            Vector2 thumbstick = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick);
+            thumbstick1 = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
+            absX1 = Mathf.Abs(thumbstick1.x);
+            absY1 = Mathf.Abs(thumbstick1.y);
 
-            var absX = Mathf.Abs(thumbstick.x);
-            var absY = Mathf.Abs(thumbstick.y);
+        }
 
-            if (absX > absY)
+        if (OVRInput.Get(OVRInput.Touch.SecondaryThumbstick))   //우
+        {
+            thumbstick2 = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick);
+            absX2 = Mathf.Abs(thumbstick2.x);
+            absY2 = Mathf.Abs(thumbstick2.y);
+
+            if (absX2 > absY2)
             {
-                if (thumbstick.x > 0)
+                if (thumbstick2.x > 0)
                 {
                     target.transform.Translate(0.1f * move_sensitivity, 0, 0);
 
@@ -141,7 +154,7 @@ public class Player1 : MonoBehaviour
             }
             else
             {
-                if (thumbstick.y > 0)
+                if (thumbstick2.y > 0)
                 {
                     target.transform.Translate(0, 0, move_sensitivity * 0.1f);
                 }
@@ -161,27 +174,6 @@ public class Player1 : MonoBehaviour
         }
     }
 
-    // pc용 컨트롤
-    void moveForPC()
-    {
-        if (Input.GetKey(KeyCode.LeftArrow))    // 좌이동임
-        {
-            this.transform.Translate(-0.1f * move_sensitivity, 0.0f, 0.0f);
-            Debug.Log("Left (of keyboard)");
-        }
-
-        if (Input.GetKey(KeyCode.RightArrow))   //우이동임
-        {
-            this.transform.Translate(0.1f * move_sensitivity, 0.0f, 0.0f);
-            Debug.Log("Right (of keyboard)");
-        }
-    }
-
-
-
-
-
-    
 
     //AudioSource audioSource;
 
@@ -207,31 +199,24 @@ public class Player1 : MonoBehaviour
         move();
         zoom();
         Gun.Shoot();
-        
+
         /*        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hitInfo = new RaycastHit();*/
         /*
                 좌 컨트롤러 : 회전담당
                 우 컨트롤러: 이동담당
-
-                회전은,
-                전부 최대 + -40도정도,
-                vertical은 pitch 축
-
-                horizontal은 roll 축을 움직이되, 이후 전진 시 좌우 이동에 roll축 값이 반영됨
-                (기울이고 전진하면 우측으로 추가적으로 이동됨), 
         */
 
         Thumb();
         Trigger();
 
-/*        // 디버깅용임
-        if (Input.GetKeyDown(KeyCode.Return))   // Return은 Enter임
-        {
-            audioSource.Stop();
-            audioSource.Play();
-        }
-        Debug.Log(audioSource.time);*/
+        /*        // 디버깅용임
+                if (Input.GetKeyDown(KeyCode.Return))   // Return은 Enter임
+                {
+                    audioSource.Stop();
+                    audioSource.Play();
+                }
+                Debug.Log(audioSource.time);*/
 
     }
 }

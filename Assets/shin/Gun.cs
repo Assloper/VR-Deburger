@@ -17,7 +17,7 @@ public class Gun : MonoBehaviour
 
         if (timer_cooldown >= bullet_cooldown_Interval)
         {
-            if (ARAVRInput.GetDown(ARAVRInput.Button.One) || Input.GetKey(KeyCode.Space))
+            if ((OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger)) || (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger)) || ARAVRInput.GetDown(ARAVRInput.Button.One) || Input.GetKey(KeyCode.Space))
             {
 
                 GameObject projectile = Instantiate(bullet, transform.position, Quaternion.identity) as GameObject; // 생성과 동시에 좌표 및 방향 벡터정보를 이미 넘겨줌
