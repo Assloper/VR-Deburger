@@ -4,53 +4,119 @@ using UnityEngine;
 
 public class Player1 : MonoBehaviour
 {
-    /*public Transform target2;*/
-    public GameObject bullet;
-    public float bullet_speed = 5000;       // 탄속
-    public float bullet_cooldown_Interval = 0.3f;    // 총알 쿨다운
-    float timer_cooldown = 0;               // 쿨다운을 위한 타이머
+    public Gun Gun;
+    public GameObject target;
     
-    public bool Shooter_Shoot()
+   public float move_sensitivity = 0.3f;
+
+    Rigidbody rigidbody;
+    Camera mainCamera;
+    public Vector3 angle;
+
+
+    public float speed = 0.1f;
+    public float zoomSpeed = 10.0f;
+    void zoom()
     {
-        if (timer_cooldown >= bullet_cooldown_Interval)
+        float distance = Input.GetAxis("Mouse ScrollWheel") * -1 * zoomSpeed;
+        if (distance != 0)
         {
-            if (ARAVRInput.GetDown(ARAVRInput.Button.One) || Input.GetKey(KeyCode.Space))
-            {
-                
-                //Physics.Raycast(ray, out hitInfo);
-                GameObject projectile = Instantiate(bullet, transform.position, Quaternion.identity) as GameObject; // 생성과 동시에 좌표 및 방향 벡터정보를 이미 넘겨줌
-                                                                                                                    //projectile.transform.position = hitInfo.point;                     // 이미 Instantiate에서 정의된 부분
-                                                                                                                    //projectile.transform.position = this.transform.position;          //  위와 비슷한 내용
-                projectile.GetComponent<Rigidbody>().AddForce(transform.forward * bullet_speed);
-                Destroy(projectile, 2);
-                timer_cooldown = 0;
-                
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            mainCamera.fieldOfView += distance;
         }
-        else
+    }
+
+    public float roll_sensitivity = 0.5f;
+    public float yaw_sensitivity = 0.3f;
+    public float limitAngle = 2;
+    public float sensitivity_forMouse = 200;
+    void rotate()
+    {
+        /*        // 마우스 좌표에 따라 시야가 도는 블럭
+                float x = Input.GetAxis("Mouse X");
+                float y = Input.GetAxis("Mouse Y");
+                angle.x += x * sensitivity_forMouse * Time.deltaTime;
+                angle.y += y * sensitivity_forMouse * Time.deltaTime;*/
+
+        if (Input.GetKey(KeyCode.A) && angle.z < limitAngle)
         {
-            
-            return false;   // Shoot 실패의 경우 false return
+            angle.z += roll_sensitivity;
+
         }
+
+        if (Input.GetKey(KeyCode.D) && angle.z > -limitAngle)
+        {
+            angle.z -= roll_sensitivity;
+
+        }
+
+        if (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))   // 아무입력도 없을때, 정상각도로 돌아감
+        {
+            if (angle.z < 0)
+            {
+                angle.z += 0.1f;
+
+            }
+            else if (angle.z > 0)
+            {
+                angle.z -= 0.1f;
+
+            }
+
+        }
+
+
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            angle.y -= yaw_sensitivity;
+        }
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            angle.y += yaw_sensitivity;
+        }
+
+        transform.rotation = Quaternion.Euler(0, angle.y, angle.z);
 
     }
 
+    // Move
+    void move()
+    {
+        /*
+                // 실습용이었던걸 떼온것, 참고용도
+                transform.Translate(Input.GetAxis("Horizontal") * speed * Time.deltaTime, 0, 0);
+                transform.Translate(0, 0, Input.GetAxis("Vertical") * speed * Time.deltaTime);
+                //Vector3 relativePos = target.position - transform.position;
+                //transform.rotation = Quaternion.LookRotation(relativePos);
+        */
 
 
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.Translate(-0.2f, 0, 0);   // 조금씩 이동
+        }
+
+        if (Input.GetKey(KeyCode.D))
+        {
+            transform.Translate(0.2f, 0, 0);   // 조금씩 이동
+        }
+
+        if (Input.GetKey(KeyCode.S))                        // move to back, keyboard 'S'
+            this.transform.Translate(0, 0, -0.1f * speed);
 
 
-    
+        if (Input.GetKey(KeyCode.W))
+        {
+            transform.Translate((-angle.z / 100), 0, speed);     // roll 각도에 따라 추가적으로 horizontal 이동하는 코드. 즉, 기울어진 방향으로 약간 이동하는 코드 + y축 이동을 막는 코드
+            //rigidbody.velocity = transform.forward * speed;
 
+        }
 
-
-    // 오큘러스를 위한 컨트롤
-    public GameObject target;
-    public float move_sensitivity = 0.3f;
+        Camera.main.transform.position = transform.position;    // 카메라가 따라오게 함
+        //Camera.main.transform.Translate(0, 5.8f, 0);  // 
+        Camera.main.transform.Translate(0, 0.9f, -3);
+        transform.Translate(0, -transform.position.y, 0);
+        Camera.main.transform.rotation = Quaternion.Euler(0, angle.y, 0);
+    }
 
     void Thumb()    // 드럼스틱(조이스틱)임
     {
@@ -117,18 +183,31 @@ public class Player1 : MonoBehaviour
 
     
 
-    AudioSource audioSource;
+    //AudioSource audioSource;
 
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        angle.y = -Camera.main.transform.eulerAngles.x;
+        angle.x = Camera.main.transform.eulerAngles.y;
+        angle.z = Camera.main.transform.eulerAngles.z;
+
+        transform.eulerAngles = new Vector3(0, 0, 0);
+
+        mainCamera = GetComponent<Camera>();
+
+
+        rigidbody = GetComponent<Rigidbody>();
+        //audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Shooter_Shoot();
-        timer_cooldown += Time.deltaTime;
+        rotate();
+        move();
+        zoom();
+        Gun.Shoot();
+        
         /*        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hitInfo = new RaycastHit();*/
         /*
@@ -146,13 +225,13 @@ public class Player1 : MonoBehaviour
         Thumb();
         Trigger();
 
-        // 디버깅용임
+/*        // 디버깅용임
         if (Input.GetKeyDown(KeyCode.Return))   // Return은 Enter임
         {
             audioSource.Stop();
             audioSource.Play();
         }
-        Debug.Log(audioSource.time);
+        Debug.Log(audioSource.time);*/
 
     }
 }
