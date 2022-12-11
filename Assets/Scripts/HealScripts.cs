@@ -36,7 +36,11 @@ public class HealScripts : MonoBehaviour
 
 	void OnTriggerEnter(Collider other)
 	{
-		if (other.tag == "Airplane")
+		/*if (other.tag == "Airplane")
+		{
+			Collect();
+		}*/
+		if (other.gameObject.CompareTag("Airplane"))
 		{
 			Collect();
 		}
