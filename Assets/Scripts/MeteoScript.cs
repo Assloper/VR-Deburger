@@ -53,6 +53,7 @@ public class MeteoScript : MonoBehaviour
             count++;
             if (collision <= 100)
                 collision -= 10;
+            ScoreSum(7);
         }
         else if (heal == '+')
         {
@@ -68,7 +69,6 @@ public class MeteoScript : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("collision");
         if (collision.gameObject.CompareTag("Meteo"))
         {
             Sum('-');

@@ -295,7 +295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12f66489b0199724f8aebabf76317f28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MeteoSpeed: 1
+  MeteoSpeed: 0.5
   rb: {fileID: -209129858649953711}
   changeObject: {fileID: 5025951498495770907, guid: f30295ead37c6604c902325fd5df8699, type: 3}
   collectSound: {fileID: 8300000, guid: 4b8b1d12421a15449899d63ea9a423b3, type: 3}
