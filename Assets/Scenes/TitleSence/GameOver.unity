@@ -230,7 +230,7 @@ RectTransform:
   m_GameObject: {fileID: 86754702}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 66}
-  m_LocalScale: {x: 14.8150625, y: 8.595557, z: 1}
+  m_LocalScale: {x: 12.896472, y: 5.752452, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 82555916}
@@ -238,7 +238,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 11, y: -105}
+  m_AnchoredPosition: {x: 11, y: -16}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &86754704
@@ -261,7 +261,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: b241bb3f40827674e849b20889c1a7ac, type: 3}
+  m_Texture: {fileID: 2800000, guid: 05937f619871b6643a294e7b6a30f5ed, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -1074,7 +1074,7 @@ GameObject:
   - component: {fileID: 1977197309}
   - component: {fileID: 1977197313}
   m_Layer: 5
-  m_Name: Start-Button
+  m_Name: ReStart-Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1165,8 +1165,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2010991279}
-        m_TargetAssemblyTypeName: MoveMainSence, Assembly-CSharp
+      - m_Target: {fileID: 2010991281}
+        m_TargetAssemblyTypeName: MoveTitleScene, Assembly-CSharp
         m_MethodName: SceneChange
         m_Mode: 1
         m_Arguments:
@@ -1371,7 +1371,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2010991280}
-  - component: {fileID: 2010991279}
+  - component: {fileID: 2010991281}
   m_Layer: 0
   m_Name: Click
   m_TagString: Untagged
@@ -1379,18 +1379,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2010991279
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2010991278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 890611747550f274c8438808ff40d118, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &2010991280
 Transform:
   m_ObjectHideFlags: 0
@@ -1406,3 +1394,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2010991281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2010991278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5370391da6cd46b448c8ef44afe4464e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
