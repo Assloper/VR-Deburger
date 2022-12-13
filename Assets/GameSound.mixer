@@ -50,7 +50,7 @@ AudioMixerController:
   m_UpdateMode: 0
   m_ExposedParameters:
   - guid: 7de45e53587df914dbdb6f6a67cd4ff1
-    name: TitleMusic
+    name: MusicVolume
   m_AudioMixerGroupViews:
   - guids:
     - 24e0a43828b779748858f88663cd8d26
@@ -102,5 +102,5 @@ AudioMixerSnapshotController:
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: 937000036ba692448b4fd080cc34a56b
   m_FloatValues:
-    7de45e53587df914dbdb6f6a67cd4ff1: -0.025776558
+    7de45e53587df914dbdb6f6a67cd4ff1: -0.16685224
   m_TransitionOverrides: {}
